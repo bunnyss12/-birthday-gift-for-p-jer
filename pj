@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ของขวัญเล็ก ๆ สำหรับพี่เจ ❤️</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Itim&family=Mitr:wght@300;400;500&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: 'Mitr', sans-serif;
+      background: linear-gradient(135deg, #fff4f6, #ffe4ec, #fff8f5);
+      color: #5f3b45;
+      overflow: hidden;
+    }
+
+    /* ---------- พื้นหลัง ---------- */
+
+    .background {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .heart {
+      position: absolute;
+      color: rgba(255, 120, 150, 0.25);
+      animation: float 8s linear infinite;
+      font-size: 25px;
+    }
+
+    .heart:nth-child(1) {
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .heart:nth-child(2) {
+      left: 30%;
+      animation-delay: 2s;
+    }
+
+    .heart:nth-child(3) {
+      left: 55%;
+      animation-delay: 4s;
+    }
+
+    .heart:nth-child(4) {
+      left: 75%;
+      animation-delay: 1s;
+    }
+
+    .heart:nth-child(5) {
+      left: 90%;
+      animation-delay: 3s;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(110vh) rotate(0deg);
+        opacity: 0;
+      }
+
+      20% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-15vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* ---------- หน้าหลัก ---------- */
+
+    .page {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      padding: 25px;
+
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0.95) translateY(15px);
+
+      transition:
+        opacity 0.6s ease,
+        transform 0.6s ease,
+        visibility 0.6s;
+    }
+
+    .page.active {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1) translateY(0);
+    }
+
+    .card {
+      width: min(90%, 520px);
+      padding: 45px 30px;
+
+      text-align: center;
+
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(15px);
+
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 30px;
+
+      box-shadow:
+        0 20px 60px rgba(170, 80, 110, 0.15),
+        inset 0 1px 0 rgba(255,255,255,0.8);
+    }
+
+    /* ---------- ตัวหนังสือ ---------- */
+
+    .small {
+      font-size: 15px;
+      color: #a77883;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-family: 'Itim', cursive;
+      font-size: clamp(38px, 10vw, 62px);
+      line-height: 1.15;
+      color: #d95778;
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      font-family: 'Itim', cursive;
+      font-size: clamp(34px, 8vw, 50px);
+      color: #d95778;
+      margin-bottom: 20px;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      line-height: 1.9;
+      color: #76535c;
+    }
+
+    .message {
+      font-size: 17px;
+      line-height: 2;
+      color: #76535c;
+      margin: 20px 0;
+    }
+
+    .highlight {
+      color: #d95778;
+      font-weight: 500;
+    }
+
+    /* ---------- ปุ่ม ---------- */
+
+    .btn {
+      display: inline-block;
+
+      margin-top: 25px;
+      padding: 14px 32px;
+
+      border: none;
+      border-radius: 999px;
+
+      background: linear-gradient(135deg, #ef7895, #d95378);
+      color: white;
+
+      font-family: 'Mitr', sans-serif;
+      font-size: 16px;
+
+      cursor: pointer;
+
+      box-shadow: 0 8px 25px rgba(217, 83, 120, 0.25);
+
+      transition: 0.25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 30px rgba(217, 83, 120, 0.35);
+    }
+
+    .btn:active {
+      transform: scale(0.96);
+    }
+
+    /* ---------- ปุ่มรัก / ไม่รัก ---------- */
+
+    .love-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 25px;
+      flex-wrap: wrap;
+    }
+
+    .love-btn {
+      padding: 13px 30px;
+      border-radius: 999px;
+      border: none;
+      font-family: 'Mitr', sans-serif;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    .love {
+      background: #e95f82;
+      color: white;
+      box-shadow: 0 7px 20px rgba(233, 95, 130, 0.25);
+    }
+
+    .not-love {
+      background: white;
+      color: #b66b7d;
+      border: 1px solid #f0c3ce;
+    }
+
+    .love-btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .hint {
+      margin-top: 18px;
+      font-size: 14px;
+      color: #a87883;
+    }
+
+    /* ---------- หน้า 4 ---------- */
+
+    .cute-face {
+      font-size: 70px;
+      margin-bottom: 10px;
+      animation: cuteBounce 1.8s infinite;
+    }
+
+    @keyframes cuteBounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    /* ---------- หน้า 6 ---------- */
+
+    .birthday {
+      font-family: 'Itim', cursive;
+      font-size: clamp(35px, 9vw, 55px);
+      color: #d95778;
+      line-height: 1.2;
+    }
+
+    .heart-big {
+      font-size: 55px;
+      margin: 15px 0;
+      animation: heartbeat 1.2s infinite;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.18);
+      }
+    }
+
+    /* ---------- หน้า 7 ---------- */
+
+    .final-card {
+      background:
+        radial-gradient(circle at top,
+        rgba(255,255,255,0.95),
+        rgba(255,235,241,0.85));
+
+      border: 2px solid rgba(255,255,255,0.9);
+    }
+
+    .final-title {
+      font-family: 'Itim', cursive;
+      font-size: clamp(35px, 9vw, 55px);
+      color: #d95778;
+      margin-bottom: 20px;
+    }
+
+    .signature {
+      margin-top: 25px;
+      font-family: 'Itim', cursive;
+      font-size: 25px;
+      color: #d95778;
+    }
+
+    .sparkle {
+      font-size: 25px;
+      margin-bottom: 15px;
+    }
+
+    /* ---------- เอฟเฟกต์ตอนเปิดหน้า ---------- */
+
+    .page.active .card {
+      animation: cardIn 0.7s ease;
+    }
+
+    @keyframes cardIn {
+      from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.96);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* ---------- มือถือ ---------- */
+
+    @media (max-width: 500px) {
+
+      .card {
+        padding: 38px 22px;
+        border-radius: 25px;
+      }
+
+      .message {
+        font-size: 16px;
+      }
+
+      .subtitle {
+        font-size: 16px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- พื้นหลังหัวใจลอย -->
+  <div class="background">
+    <div class="heart">♡</div>
+    <div class="heart">♥</div>
+    <div class="heart">♡</div>
+    <div class="heart">♥</div>
+    <div class="heart">♡</div>
+  </div>
+
+
+  <!-- ================= หน้า 1 ================= -->
+
+  <section class="page active" id="page1">
+
+    <div class="card">
+
+      <div class="sparkle">✨ 💗 ✨</div>
+
+      <p class="small">มีบางอย่างอยากให้พี่เปิดดู...</p>
+
+      <h1>
+        ของขวัญเล็ก ๆ<br>
+        สำหรับพี่เจ
+      </h1>
+
+      <p class="subtitle">
+        อาจจะเป็นของขวัญธรรมดา ๆ<br>
+        แต่หนูตั้งใจทำให้พี่นะ
+      </p>
+
+      <button class="btn" onclick="nextPage()">
+        ค่อย ๆ เปิดไปนะ ♡
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= หน้า 2 ================= -->
+
+  <section class="page" id="page2">
+
+    <div class="card">
+
+      <div class="sparkle">🌷</div>
+
+      <h2>พร้อมหรือยัง?</h2>
+
+      <p class="message">
+        ของขวัญชิ้นนี้อาจไม่ได้ใหญ่ที่สุด<br>
+        แต่มันเป็นหนึ่งในของขวัญ<br>
+        ที่หนูตั้งใจทำมากที่สุดเลยนะ
+      </p>
+
+      <button class="btn" onclick="nextPage()">
+        ไปต่อกัน ♡
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= หน้า 3 ================= -->
+
+  <section class="page" id="page3">
+
+    <div class="card">
+
+      <div class="sparkle">🥺</div>
+
+      <h2>ขอถามอะไรก่อน...</h2>
+
+      <p class="message">
+        ก่อนที่จะให้พี่เปิดไปหน้าต่อไป<br>
+        หนูมีคำถามสำคัญอยู่อย่างหนึ่ง
+      </p>
+
+      <h2 style="font-size:42px;">
+        พี่รักหนูมั้ย?
+      </h2>
+
+      <div class="love-buttons">
+
+        <button
+          class="love-btn love"
+          onclick="loveAnswer()">
+          รัก ❤️
+        </button>
+
+        <button
+          class="love-btn not-love"
+          onclick="notLoveAnswer()">
+          ไม่รัก
+        </button>
+
+      </div>
+
+      <p class="hint">
+        เลือกดี ๆ นะ 🤣
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= หน้า 4 ================= -->
+
+  <section class="page" id="page4">
+
+    <div class="card">
+
+      <div class="cute-face">🥰</div>
+
+      <h1>น่ารักจังเลยย</h1>
+
+      <p class="message">
+        ตอบแบบนี้ก็น่ารักเหมือนกันนะ<br>
+        งั้นไปดูต่อกันดีกว่า ♡
+      </p>
+
+      <button class="btn" onclick="nextPage()">
+        ไปต่อ ✨
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= หน้า 5 ================= -->
+
+  <section class="page" id="page5">
+
+    <div class="card">
+
+      <div class="sparkle">💌</div>
+
+      <h2>มีบางอย่างอยากบอก</h2>
+
+      <p class="message">
+
+        หนูไม่มีอะไรจะให้พี่เลย<br>
+
+        หนูอยากจะส่งอะไรไปให้<br>
+        หรือทำอะไรให้พี่บ้าง<br><br>
+
+        แต่ตอนนี้หนูคงทำได้แค่นี้<br><br>
+
+        มันอาจจะไม่มาก<br>
+        <span class="highlight">
+          แต่มันมาจากความรู้สึกที่หนูมีจริง ๆ
+        </span>
+
+      </p>
+
+      <button class="btn" onclick="nextPage()">
+        อ่านข้อความสุดท้าย 💗
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= หน้า 6 ================= -->
+
+  <section class="page" id="page6">
+
+    <div class="card">
+
+      <div class="heart-big">❤️</div>
+
+      <div class="birthday">
+        Happy Birthday,<br>
+        พี่เจ 🎂
+      </div>
+
+      <p class="message">
+
+        หนูอยากจะทำให้พี่มีความสุข<br>
+        กับทุก ๆ เรื่องเลยนะ<br><br>
+
+        อยากให้พี่สุขภาพแข็งแรง<br>
+        มีแต่เรื่องดี ๆ เข้ามาในชีวิต<br><br>
+
+        หนูอยากจะอยู่กับพี่นาน ๆ<br>
+        อยากจะอยู่กับพี่ในทุก ๆ วันเกิดเลย<br><br>
+
+        <span class="highlight">
+          หนูรักพี่นะ ❤️
+        </span>
+
+      </p>
+
+      <button class="btn" onclick="nextPage()">
+        กดตรงนี้สิ ♡
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= หน้า 7 ================= -->
+
+  <section class="page" id="page7">
+
+    <div class="card final-card">
+
+      <div class="sparkle">
+        ✨ 🎂 ✨
+      </div>
+
+      <div class="final-title">
+        สุขสันต์วันเกิดนะพี่เจ 🎂
+      </div>
+
+      <p class="message">
+
+        ขอให้ปีนี้ใจดีกับพี่มาก ๆ<br><br>
+
+        และถ้าพี่หันกลับมาเมื่อไหร่...<br><br>
+
+        <span class="highlight">
+          หนูจะยังอยู่ตรงนี้นะ 🫶
+        </span>
+
+      </p>
+
+      <div class="signature">
+        — ทิพย์ ❤️
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <script>
+
+    let currentPage = 1;
+
+    function showPage(pageNumber) {
+
+      document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+      });
+
+      const page = document.getElementById('page' + pageNumber);
+
+      if (page) {
+        page.classList.add('active');
+      }
+
+      currentPage = pageNumber;
+    }
+
+
+    function nextPage() {
+
+      if (currentPage < 7) {
+        showPage(currentPage + 1);
+      }
+
+    }
+
+
+    function loveAnswer() {
+
+      showPage(4);
+
+      createHearts();
+
+    }
+
+
+    function notLoveAnswer() {
+
+      alert('แน่ใจนะว่าเลือกถูกแล้ว 🤣❤️');
+
+    }
+
+
+    /* หัวใจลอยตอนกดรัก */
+
+    function createHearts() {
+
+      for (let i = 0; i < 15; i++) {
+
+        const heart = document.createElement('div');
+
+        heart.innerHTML = '❤️';
+
+        heart.style.position = 'fixed';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.bottom = '-30px';
+        heart.style.fontSize = (15 + Math.random() * 20) + 'px';
+        heart.style.zIndex = '999';
+        heart.style.pointerEvents = 'none';
+
+        document.body.appendChild(heart);
+
+        const duration = 2 + Math.random() * 3;
+
+        heart.animate(
+          [
+            {
+              transform: 'translateY(0) scale(0.5)',
+              opacity: 0
+            },
+            {
+              transform: 'translateY(-40vh) scale(1)',
+              opacity: 1
+            },
+            {
+              transform: 'translateY(-110vh) scale(1.2)',
+              opacity: 0
+            }
+          ],
+          {
+            duration: duration * 1000,
+            easing: 'ease-out'
+          }
+        );
+
+        setTimeout(() => {
+          heart.remove();
+        }, duration * 1000);
+
+      }
+
+    }
+
+  </script>
+
+</body>
+</html>
